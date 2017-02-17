@@ -1,2 +1,2 @@
-###Set up a project to make a code rules.
+###Set up a project to make some coding rules.
 
