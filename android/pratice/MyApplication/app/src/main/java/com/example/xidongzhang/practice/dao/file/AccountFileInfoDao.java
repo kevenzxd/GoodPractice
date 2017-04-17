@@ -1,19 +1,21 @@
-package com.example.xidongzhang.practice.dao.sharePreference;
+package com.example.xidongzhang.practice.dao.file;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import com.example.xidongzhang.practice.dao.DaoException;
 import com.example.xidongzhang.practice.dao.entity.AccountInfo;
+import com.example.xidongzhang.practice.dao.sharePreference.PrefDataManager;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by xidongzhang on 2017/3/27.
  */
-public class AccountInfoDao extends PrefDataManager<AccountInfo> {
+public class AccountFileInfoDao extends FileDataManager<AccountInfo> {
 
-    private static final String FILE_NAME = "AccountInfoPreference";
+    private static final String FILE_NAME = "account_info";
 
     private static final List<String> KEYS_LIST = new ArrayList<>();
 
@@ -23,7 +25,7 @@ public class AccountInfoDao extends PrefDataManager<AccountInfo> {
         KEYS_LIST.add(AccountInfo.PHONENUMBER);
     }
 
-    public AccountInfoDao(Context context) {
+    public AccountFileInfoDao(Context context) {
         super(context);
     }
 
@@ -40,7 +42,7 @@ public class AccountInfoDao extends PrefDataManager<AccountInfo> {
     }
 
     @Override
-    protected SharedPreferences getSharePreference() {
-        return mContext.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE);
+    protected File getDataFile() {
+        return new File(PATH_FOLDER + "/"+FILE_NAME);
     }
 }

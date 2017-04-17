@@ -3,6 +3,8 @@ package com.example.xidongzhang.practice.dao.db;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import com.example.xidongzhang.practice.dao.DaoException;
+import com.example.xidongzhang.practice.dao.ParseEntity;
 import com.example.xidongzhang.practice.dao.entity.CallLog;
 
 import java.util.List;
@@ -19,8 +21,8 @@ public class CallLogDao extends DBManager<CallLog> {
     }
 
     @Override
-    protected long insertSingleContentIntoDb(ContentValues contentValue) {
-        return mDb.insert(CallLog.TABLE_NAME, null, contentValue);
+    protected long insertSingleContentIntoDb(CallLog entity) {
+        return 0;
     }
 
     @Override
@@ -45,6 +47,11 @@ public class CallLogDao extends DBManager<CallLog> {
 
     @Override
     protected List<CallLog> getContentListByKey(ContentValues contentValue) {
+        return null;
+    }
+
+    @Override
+    public ContentValues parse(Object entity) {
         return null;
     }
 }

@@ -55,4 +55,44 @@ public class CallLog implements Parcelable {
         type = in.readInt();
         callTime = in.readLong();
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getCallOutNumber() {
+        return callOutNumber;
+    }
+
+    public void setCallOutNumber(String callOutNumber) {
+        this.callOutNumber = callOutNumber;
+    }
+
+    public String getCallInNumber() {
+        return callInNumber;
+    }
+
+    public void setCallInNumber(String callInNumber) {
+        this.callInNumber = callInNumber;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public long getCallTime() {
+        return callTime;
+    }
+
+    public void setCallTime(long callTime) {
+        this.callTime = callTime;
+    }
 }

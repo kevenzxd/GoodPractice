@@ -4,6 +4,8 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.net.Uri;
+import com.example.xidongzhang.practice.dao.DaoException;
+import com.example.xidongzhang.practice.dao.ParseEntity;
 import com.example.xidongzhang.practice.dao.entity.Contact;
 
 import java.util.List;
@@ -18,16 +20,6 @@ public class ContactDao extends DBManager<Contact> {
     public ContactDao(Context context) {
         super(context);
         mContentResolver = context.getContentResolver();
-    }
-
-    @Override
-    protected long insertSingleContentIntoDb(ContentValues contentValue) {
-        Uri result = mContentResolver.insert(Contact.BASE_URI, contentValue);
-        if (result == null) {
-            return 0;
-        } else {
-            return Long.parseLong(result.getLastPathSegment());
-        }
     }
 
     @Override
@@ -54,4 +46,20 @@ public class ContactDao extends DBManager<Contact> {
     protected List<Contact> getContentListByKey(ContentValues contentValue) {
         return null;
     }
+
+    @Override
+    public ContentValues parse(Object entity) {
+        return null;
+    }
+
+    @Override
+    public List getContentList(String selection, String[] selectionArgs, String sortOrder) throws DaoException {
+        return null;
+    }
+
+    @Override
+    protected long insertSingleContentIntoDb(Contact entity) {
+        return 0;
+    }
+
 }

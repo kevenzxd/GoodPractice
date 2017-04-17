@@ -1,24 +1,27 @@
-package com.example.xidongzhang.practice.dao.db;
+package com.example.xidongzhang.practice.dao.network;
 
 import android.content.ContentValues;
 import android.content.Context;
 import com.example.xidongzhang.practice.dao.DaoException;
 import com.example.xidongzhang.practice.dao.DataManager;
-import com.example.xidongzhang.practice.dao.ParseEntity;
 
 import java.util.List;
 
 /**
+ *
+ * Save data into file, and should read data from it.
+ *
  * Created by xidongzhang on 2017/3/27.
  */
-public abstract class DBManager<T> implements DataManager {
+public abstract class NetDataManager<T> implements DataManager {
 
     protected Context mContext;
 
-    public DBManager(Context context) {
+    public NetDataManager(Context context) {
         mContext = context;
     }
 
+    public abstract boolean checkValidKey(String key);
 
     @Override
     public long addSingleContent(Object entity) throws DaoException {
@@ -27,7 +30,7 @@ public abstract class DBManager<T> implements DataManager {
 
     @Override
     public int addBulkContent(List list) {
-        return insertBulkContentIntoDb(list);
+        return 0;
     }
 
     @Override
@@ -46,15 +49,12 @@ public abstract class DBManager<T> implements DataManager {
     }
 
     @Override
-    public List<T> getContentList(String selection, String[] selectionArgs, String sortOrder) throws DaoException {
+    public List getContentList(String selection, String[] selectionArgs, String sortOrder) throws DaoException {
         return null;
     }
 
-    protected abstract long insertSingleContentIntoDb(T entity);
-    protected abstract int insertBulkContentIntoDb(List contentValues);
-    protected abstract int removeContentByKey(ContentValues contentValue);
-    protected abstract int updateContentByKey(String key, ContentValues contentValue);
-    protected abstract T getContentByKey(ContentValues contentValue);
-    protected abstract List<T> getContentListByKey(ContentValues contentValue);
-
+    @Override
+    public ContentValues parse(Object entity) {
+        return null;
+    }
 }

@@ -1,23 +1,24 @@
 package com.example.xidongzhang.practice.dao;
 
-import android.content.ContentValues;
-
 import java.util.List;
 
 /**
  * Created by xidongzhang on 2017/3/27.
  */
-public interface DataManager<T> {
+public interface DataManager<T> extends ParseEntity {
 
-    public long addSingleContent(ContentValues contentValue) throws DaoException;
+    public static final String Order = "orderBy";
+    public static final String selection = "selection";
 
-    public int addBulkContent(List<ContentValues> contentValuesList) throws DaoException;
+    public long addSingleContent(T entity) throws DaoException;
 
-    public int removeContent(ContentValues contentValue) throws DaoException;
+    public int addBulkContent(List<T> updateContentList) throws DaoException;
 
-    public int updateContent(String key, ContentValues contentValue) throws DaoException;
+    public int removeContent(String selection, String[] selectionArgs) throws DaoException;
 
-    public T getContent(ContentValues contentValue) throws DaoException;
+    public int updateContent(String selection, String[] selectionArgs, List<T> updateContent) throws DaoException;
 
-    public List<T> getContentList(ContentValues contentValue) throws DaoException;
+    public T getContent(String key, Object value) throws DaoException;
+
+    public List<T> getContentList(String selection, String[] selectionArgs, String sortOrder) throws DaoException;
 }
