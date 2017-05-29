@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by xidongzhang on 2017/3/27.
  */
-public interface DataManager<T> extends ParseEntity {
+public interface DataManager<T> extends ParseEntity<T> {
 
     public static final String Order = "orderBy";
     public static final String selection = "selection";
